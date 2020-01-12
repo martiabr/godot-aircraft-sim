@@ -34,16 +34,21 @@ func process_input(delta):
 	    input_movement_vector.y += 1
 	if Input.is_action_pressed("movement_backward"):
 	    input_movement_vector.y -= 1
-	if Input.is_action_pressed("movement_left"):
-	    input_movement_vector.x -= 1
 	if Input.is_action_pressed("movement_right"):
 	    input_movement_vector.x += 1
+	if Input.is_action_pressed("movement_left"):
+	    input_movement_vector.x -= 1
+	if Input.is_action_pressed("movement_up"):
+    	input_movement_vector.z += 1
+	if Input.is_action_pressed("movement_down"):
+    	input_movement_vector.z -= 1
 	
 	input_movement_vector = input_movement_vector.normalized()
 	
 	# Basis vectors are already normalized.
 	dir += -cam_xform.basis.z * input_movement_vector.y
 	dir += cam_xform.basis.x * input_movement_vector.x
+	dir += cam_xform.basis.y * input_movement_vector.z
 
 	# ----------------------------------
 	
@@ -57,13 +62,11 @@ func process_input(delta):
 	# ----------------------------------
 
 func process_movement(delta):
-	dir.y = 0
 	dir = dir.normalized()
 	
 	#vel.y += delta * GRAVITY
 	
 	var hvel = vel
-	hvel.y = 0
 	
 	var target = dir
 	target *= MAX_SPEED
@@ -76,6 +79,7 @@ func process_movement(delta):
 	
 	hvel = hvel.linear_interpolate(target, accel * delta)
 	vel.x = hvel.x
+	vel.y = hvel.y
 	vel.z = hvel.z
 	vel = move_and_slide(vel, Vector3(0, 1, 0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
