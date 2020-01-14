@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( 0, 1, 10, 0, 1, -10, 0, 1, 10, 0, 1, -10, -10, -1, 10, 10, -1, -10, 10, -1, 10, -10, -1, -10, 0, 1, 10, 0, 1, -10, 0, 1, -10, 0, 1, 10, 10, -1, 10, -10, -1, -10, 10, -1, -10, -10, -1, 10, -10, -1, 10, 10, -1, 10, -10, -1, -10, 10, -1, -10 )
+
+[sub_resource type="PrismMesh" id=2]
+size = Vector3( 20, 2, 20 )
+
+[node name="Ramp" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null

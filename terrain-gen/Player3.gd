@@ -50,4 +50,5 @@ func _physics_process(delta):
 	rotation = eul_ang
 	#print(eul_rate)
 	
-	translate(surge_speed * delta * -dir_z )
+	#translate(surge_speed * delta * -dir_z )
+	move_and_slide(surge_speed * -transform.basis.z)
