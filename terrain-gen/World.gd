@@ -1,5 +1,9 @@
 extends Spatial
 
+export var period = 50
+export var octaves = 5
+export var amplitude = 120
+
 var noise
 
 func _ready():
@@ -7,8 +11,8 @@ func _ready():
 
 func generate_map():
 	noise = OpenSimplexNoise.new()
-	noise.period = 80
-	noise.octaves = 6
+	noise.period = period
+	noise.octaves = octaves
 	
 	var plane_mesh = PlaneMesh.new()
 	plane_mesh.size = Vector2(400, 400)
@@ -26,7 +30,7 @@ func generate_map():
 	
 	for i in range(data_tool.get_vertex_count()):
 		var vertex = data_tool.get_vertex(i)
-		vertex.y = noise.get_noise_3d(vertex.x, vertex.y, vertex.z) * 60
+		vertex.y = noise.get_noise_3d(vertex.x, vertex.y, vertex.z) * amplitude
 		
 		data_tool.set_vertex(i, vertex)
 	
