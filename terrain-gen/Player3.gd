@@ -11,11 +11,11 @@ var dir_z = Vector3(0, 0, 1)
 # Aircraft dynamics parameters:
 var g = 10.0
 var m = 50.0
-var surge_speed = 18.0
-var b2t_param = 650.0  # bank-to-turn speed
+var surge_speed = 20.0
+var b2t_param = 700.0  # bank-to-turn speed
 var d_roll = 2.5  # damping constant in roll
 var d_pitch = 3.0  # damping constant in pitch
-var k_roll = 6.5  # spring constant in roll
+var k_roll = 10.0  # spring constant in roll
 var k_pitch = 6.0  # spring constant in roll
 var u = Vector3(4, 0, 5)  # magnitude of forces in pitch, yaw, roll
 

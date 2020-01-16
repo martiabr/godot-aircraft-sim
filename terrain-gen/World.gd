@@ -27,6 +27,8 @@ func generate_map():
 	var data_tool = MeshDataTool.new()
 
 	data_tool.create_from_surface(array_plane, 0)
+	
+	#var noise_image = noise.get_seamless_image(400)
 
 	for i in range(data_tool.get_vertex_count()):
 		var vertex = data_tool.get_vertex(i)
