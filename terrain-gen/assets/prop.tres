@@ -1,0 +1,9 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/PropMap_01.jpg" type="Texture" id=1]
+
+[resource]
+resource_name = "Prop"
+albedo_color = Color( 1, 1, 0.626667, 1 )
+albedo_texture = ExtResource( 1 )
+metallic = 0.5
