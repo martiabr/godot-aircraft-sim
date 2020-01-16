@@ -31,7 +31,6 @@ func generate_map():
 	for i in range(data_tool.get_vertex_count()):
 		var vertex = data_tool.get_vertex(i)
 		vertex.y = noise.get_noise_3d(vertex.x, vertex.y, vertex.z) * amplitude
-		
 		data_tool.set_vertex(i, vertex)
 	
 	for i in range(array_plane.get_surface_count()):
@@ -44,6 +43,7 @@ func generate_map():
 	
 	var mesh_instance = MeshInstance.new()
 	mesh_instance.mesh = surface_tool.commit()
-	
+	mesh_instance.set_surface_material(0, load("res://assets/shader.material"))
+	mesh_instance.create_trimesh_collision()
 	add_child(mesh_instance)
 	

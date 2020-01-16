@@ -1,6 +1,7 @@
 extends KinematicBody
 # TODO: sounds, smoke trail, more advanced dynamics, turn terrain into hollow sphere shit
-# surge speed control
+# surge speed control, generate trees and stuff, possibly buildings? Erosion, clouds, fog, ...
+# Water, moving propeller (change to rotating disc at high speed?)
 
 # Helper variables:
 var dir_x = Vector3(1, 0, 0)
@@ -58,7 +59,6 @@ func _physics_process(delta):
 	eul_rate += eul_acc * delta
 	eul_rate.y = b2t_param / surge_speed * tan(eul_ang.z) * delta  # bank-to-turn equation
 	eul_ang += eul_rate * delta
-	print(tan(eul_ang.z))
 	
 	# Clamp euler angles:  TODO: use sigmoid instead?
 	eul_ang.x = clamp(eul_ang.x, -roll_max, roll_max)
