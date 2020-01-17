@@ -1,2 +1,2 @@
-# terrain-gen
-Godot random terrain generation test
+# Godot aircraft simulation
+Test of random terrain generation and aircraft simulation in godot
