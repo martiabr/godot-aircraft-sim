@@ -1,7 +1,9 @@
 extends KinematicBody
 # TODO: sounds, smoke trail, more advanced dynamics, turn terrain into hollow sphere shit
 # surge speed control, generate trees and stuff, possibly buildings? Erosion, clouds, fog, ...
-# Water, moving propeller (change to rotating disc at high speed?)
+# Water, moving propeller (change to rotating disc at high speed?) Flags on the mountain tops
+
+onready var propeller = $Propeller
 
 # Helper variables:
 var dir_x = Vector3(1, 0, 0)
@@ -12,7 +14,8 @@ var dir_z = Vector3(0, 0, 1)
 var g = 10.0
 var m = 50.0
 var surge_speed = 20.0
-var b2t_param = 700.0  # bank-to-turn speed
+#var b2t_param = 700.0  # bank-to-turn speed
+var b2t_param = 2000.0  # bank-to-turn speed
 var d_roll = 2.5  # damping constant in roll
 var d_pitch = 3.0  # damping constant in pitch
 var k_roll = 10.0  # spring constant in roll
@@ -66,7 +69,9 @@ func _physics_process(delta):
 	
 	#translate(surge_speed * delta * -dir_z )
 	rotation = eul_ang
-	move_and_slide(surge_speed * -transform.basis.z)
+	move_and_slide(surge_speed * -transform.basis.z, Vector3(0,0,0), true, 1, 0.785398, true)
+	
+	propeller.rotate_z(20 * delta)
 
 func clamp_elements(vec, min_el_val, max_el_val):
 	vec.x = clamp(vec.x, min_el_val, max_el_val)
